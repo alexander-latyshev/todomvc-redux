@@ -1,0 +1,12 @@
+.filter-button {
+  text-decoration: none;
+  margin: 3px;
+  color: #777;
+  padding: 3px 7px;
+}
+
+.filter-button_active {
+  border: 1px solid rgba(175, 47, 47, 0.3);
+  border-radius: 3px;
+  text-decoration: none;
+}

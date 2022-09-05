@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  height: 65px;
+  width: 100%;
+  background-color: pink;
+}
+.input {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-left: 65px;
+  font: 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border: none;
+}
+.header__toggle-all-btn,
+.header__toggle-all-btn__active {  
+  position: absolute;
+  width: 50px;
+  height: 65px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: white;
+}
+.header__toggle-all-btn::before,
+.header__toggle-all-btn__active::before {
+  display: inline-block;
+  color: #e6e6e6;
+  content: '❯';
+  font-size: 22px;
+  transform: rotate(90deg);
+}
+.header__toggle-all-btn__active::before {
+  color: #737373;
+}

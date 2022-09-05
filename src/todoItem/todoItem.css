@@ -1,0 +1,108 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  color: #4d4d4d;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  border-bottom: 1px solid #ededed;
+  background-color: white;
+}
+.todo-item__checkbox {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.todo-item__toggler {
+  position: absolute;
+  left: 10px;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #e6e6e6;
+  border-radius: 50%;
+}
+.todo-item__toggler::before {
+  display: none;
+  content: "\2713";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  color: green;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+.todo-item__checkbox:checked {
+  background: url(/src/assets/check.svg) no-repeat;
+  background-size: 40px;
+  background-position: -10px -8px;
+  border-radius: 50%;
+  display: block;
+}
+.todo-item__title {
+  height: 100%;
+  min-width: auto;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
+  transition: color 0.4s ease-in-out;
+}
+.todo-item__title__checked {
+  text-decoration: line-through;
+  color: #6b6b6b;
+}
+.todo-item__remove-button {
+  margin-right: 10px;
+  margin-left: auto;
+  display: none;
+  max-width: 30px;
+  max-height: 30px;
+  transform: rotate(45deg);
+  font-size: 35px;
+  /* color: rgba(150, 0, 0, 0.4); */
+  color: #cc9a9a;
+  border: none;
+  background-color: white;
+  transition: color 0.2s;
+}
+.todo-item__remove-button:hover {
+  color: #a83333;
+}
+.todo-item:hover .todo-item__remove-button {
+  display: block;
+}
+.todo-item__edit {
+  display: none;
+  color: #4d4d4d;
+  font: 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border: none;
+  outline: 1px solid red;
+  position: absolute;
+  background: none;
+  width: 80%;
+  height: 55px;
+  left: 50px;
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+}
+.todo-item__edit_show {
+  display: block;
+}
+.todo-item__checkbox_hidden,
+.todo-item__title_hidden,
+.todo-item:hover .todo-item__remove-button_hidden,
+.todo-item__toggler_hidden {
+  display: none;
+}

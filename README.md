@@ -1,6 +1,6 @@
-##Todomvc App
+## Todomvc App
 
-###How to run
+### How to run
 Clone this repository `git clone`
 Install dependencies `git ci`
 Run App `npm start`

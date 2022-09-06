@@ -1,7 +1,8 @@
 import {
   ADD_TODO,
   CLEAR_COMPLETED_TODO,
-  EDIT_TODO,
+  START_EDIT_TODO,
+  SUBMIT_EDIT_TODO,
   REMOVE_TODO,
   TOGGLE_ALL_TODO,
   TOGGLE_TODO,
@@ -39,9 +40,17 @@ export const clearCompletedTodo = () => {
     type: CLEAR_COMPLETED_TODO,
   };
 };
-export const editTodo = (id) => {
+
+export const startEditTodo = (id) => {
   return {
-    type: EDIT_TODO,
+    type: START_EDIT_TODO,
     payload: id,
+  };
+};
+
+export const submitEditTodo = (editProps) => {
+  return {
+    type: SUBMIT_EDIT_TODO,
+    payload: editProps,
   };
 };

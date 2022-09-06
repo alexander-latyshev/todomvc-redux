@@ -49,7 +49,7 @@
 }
 .todo-item__title {
   height: 100%;
-  min-width: auto;
+  width: 100%;
   display: flex;
   align-items: center;
   padding: 0 60px;
@@ -75,6 +75,9 @@
   border: none;
   background-color: white;
   transition: color 0.2s;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
 }
 .todo-item__remove-button:hover {
   color: #a83333;
@@ -87,10 +90,10 @@
   color: #4d4d4d;
   font: 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
   border: none;
-  outline: 1px solid red;
+  outline: 1px solid #4d4d4d;
   position: absolute;
   background: none;
-  width: 80%;
+  width: 489px;
   height: 55px;
   left: 50px;
   margin: 0;

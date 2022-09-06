@@ -12,6 +12,7 @@ class Header extends React.Component {
   addNewTodoHandler(event) {
     const todoProperties = {
       title: event.target.value,
+      isEditing: false,
       isCompleted: false,
       id: performance.now(),
     };

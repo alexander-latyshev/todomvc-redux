@@ -1,10 +1,12 @@
+import { editableInputTypes } from "@testing-library/user-event/dist/utils";
 import {
   ADD_TODO,
   CLEAR_COMPLETED_TODO,
-  EDIT_TODO,
-  REMOVE_TODO,
   TOGGLE_ALL_TODO,
   TOGGLE_TODO,
+  REMOVE_TODO,
+  START_EDIT_TODO,
+  SUBMIT_EDIT_TODO,
 } from "./types";
 
 const initialState = {
@@ -83,13 +85,31 @@ export const todosReducer = (state = initialState, action) => {
       };
     }
 
-    case EDIT_TODO: {
+    case START_EDIT_TODO: {
       const newTodoList = state.todoList.map((todo) => {
         if (todo.id !== action.payload) return todo;
         return {
           ...todo,
           isEditing: !todo.isEditing,
         };
+      });
+
+      return {
+        ...state,
+        todoList: newTodoList,
+      };
+    }
+
+    case SUBMIT_EDIT_TODO: {
+      const newTodoList = state.todoList.map((todo) => {
+        if (todo.id === action.payload.id) {
+          return {
+            ...todo,
+            isEditing: false,
+            title: action.payload.title,
+          };
+        }
+        return todo;
       });
 
       return {

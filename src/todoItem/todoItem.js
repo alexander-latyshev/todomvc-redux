@@ -1,12 +1,29 @@
 import React from "react";
 import "./todoItem.css";
 import { connect } from "react-redux";
-import { editTodo, removeTodo, toggleTodo } from "../redux/actions";
+import {
+  removeTodo,
+  startEditTodo,
+  submitEditTodo,
+  toggleTodo,
+} from "../redux/actions";
 import classNames from "classnames";
 
 export class TodoItem extends React.Component {
   constructor(props) {
     super(props);
+    this.submitEditTodoHandler = this.submitEditTodoHandler.bind(this);
+  }
+  submitEditTodoHandler(event) {
+    const editProps = {
+      title: event.target.value,
+      id: this.props.id,
+    };
+
+    if (event.code === "Enter") {
+      console.log(editProps.id, editProps.title);
+      return this.props.submitEditTodo(editProps);
+    }
   }
 
   render() {
@@ -27,17 +44,19 @@ export class TodoItem extends React.Component {
             onChange={() => this.props.toggleTodo(this.props.id)}
           />
         </label>
+
         <div
           className={classNames("todo-item__title", {
             "todo-item__title_hidden": this.props.isEditing,
             "todo-item__title__checked": this.props.isCompleted,
           })}
-          onDoubleClick={() => this.props.editTodo(this.props.id)}
+          onDoubleClick={() => this.props.startEditTodo(this.props.id)}
         >
           {this.props.title}
         </div>
 
         <input
+          onKeyDown={(event) => this.submitEditTodoHandler(event)}
           defaultValue={this.props.title}
           type="text"
           className={classNames("todo-item__edit", {
@@ -61,7 +80,8 @@ export class TodoItem extends React.Component {
 const mapDispatchToProps = {
   removeTodo: removeTodo,
   toggleTodo: toggleTodo,
-  editTodo: editTodo,
+  startEditTodo: startEditTodo,
+  submitEditTodo: submitEditTodo,
 };
 
 const mapStateToProps = (state) => {

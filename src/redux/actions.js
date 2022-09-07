@@ -48,9 +48,9 @@ export const startEditTodo = (id) => {
   };
 };
 
-export const submitEditTodo = (editProps) => {
+export const submitEditTodo = (obj) => {
   return {
     type: SUBMIT_EDIT_TODO,
-    payload: editProps,
+    payload: obj,
   };
 };

@@ -15,14 +15,20 @@ export class TodoItem extends React.Component {
     this.submitEditTodoHandler = this.submitEditTodoHandler.bind(this);
   }
   submitEditTodoHandler(event) {
-    const editProps = {
-      title: event.target.value,
-      id: this.props.id,
-    };
-
     if (event.code === "Enter") {
-      console.log(editProps.id, editProps.title);
-      return this.props.submitEditTodo(editProps);
+      !event.target.value === true
+        ? this.props.removeTodo(this.props.id)
+        : this.props.submitEditTodo({
+            title: event.target.value,
+            id: this.props.id,
+          });
+    }
+    if (event.code === "Escape") {
+      event.target.value = this.props.title;
+      return this.props.submitEditTodo({
+        title: this.props.title,
+        id: this.props.id,
+      });
     }
   }
 

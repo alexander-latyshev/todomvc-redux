@@ -4,6 +4,7 @@ import Footer from "./footer/footer.js";
 import Main from "./main/main.js";
 import "./app.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { connect } from "react-redux";
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
@@ -17,6 +18,9 @@ function withRouter(Component) {
 
 class App extends React.Component {
   render() {
+    // console.log(test);
+    // console.log(this.props);
+    localStorage.setItem("react-todos", JSON.stringify(this.props.todoList));
     return (
       <div className="todos">
         <Header />
@@ -26,4 +30,13 @@ class App extends React.Component {
     );
   }
 }
-export default withRouter(App);
+
+const mapDispatchToProps = {};
+
+const mapStateToProps = (state) => {
+  const todos = state.todos;
+  const todoList = state.todos.todoList;
+  const todo = state.todos.todoList.map((todo) => todo);
+  return { todoList, state };
+};
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

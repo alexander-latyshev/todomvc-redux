@@ -1,4 +1,3 @@
-import { editableInputTypes } from "@testing-library/user-event/dist/utils";
 import {
   ADD_TODO,
   CLEAR_COMPLETED_TODO,
@@ -10,20 +9,7 @@ import {
 } from "./types";
 
 const initialState = {
-  todoList: [
-    {
-      title: "content",
-      isCompleted: false,
-      id: performance.now() + Math.random() * 1000,
-      isEditing: false,
-    },
-    {
-      title: "math",
-      isCompleted: true,
-      id: performance.now() + Math.random() * 1000,
-      isEditing: true,
-    },
-  ],
+  todoList: [],
 };
 
 export const todosReducer = (state = initialState, action) => {

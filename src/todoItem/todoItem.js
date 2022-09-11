@@ -15,6 +15,14 @@ export class TodoItem extends React.Component {
     this.submitEditTodoHandler = this.submitEditTodoHandler.bind(this);
   }
   submitEditTodoHandler(event) {
+    if (!event.code) {
+      !event.target.value
+        ? this.props.removeTodo(this.props.id)
+        : this.props.submitEditTodo({
+            title: event.target.value,
+            id: this.props.id,
+          });
+    }
     if (event.code === "Enter") {
       !event.target.value === true
         ? this.props.removeTodo(this.props.id)
@@ -63,6 +71,7 @@ export class TodoItem extends React.Component {
 
         <input
           onKeyDown={(event) => this.submitEditTodoHandler(event)}
+          onBlur={(event) => this.submitEditTodoHandler(event)}
           defaultValue={this.props.title}
           type="text"
           className={classNames("todo-item__edit", {
